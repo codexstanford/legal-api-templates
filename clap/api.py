@@ -30,7 +30,7 @@ while (sysCounter < sysParse):
 		sysCounter = sysCounter + 1
 
 
-#apiKey = 'YOUR_API_KEY'
+#apiKey = 'API_KEY'
 requestURL = 'https://api.case.law/v1/jurisdictions/'
 
 
@@ -582,7 +582,144 @@ def wordSearch():
 	wsEndSelectorBool = False
 
 def yearSearch():
-	print("3")
+
+	nSearchLoopBool = False
+	nFullJx = ""
+
+	while (nSearchLoopBool == False):
+			print ("")
+			nAbbrevFull = input ("Please type the full name of the jurisdiction: ")
+
+			if (nAbbrevFull.lower() == "illinois" or nAbbrevFull.lower() == "1" or nAbbrevFull.lower() == "ill"):
+				nAbbrev = "ill"
+				nFullJx = "Illinois"
+				nSearchLoopBool = True
+			elif (nAbbrevFull.lower() == "new mexico" or nAbbrevFull.lower() == "nm" or nAbbrevFull.lower() == "2"):
+				nAbbrev = "nm"
+				nFullJx = "New Mexico"
+				nSearchLoopBool = True
+			elif (nAbbrevFull.lower() == "north carolina" or nAbbrevFull.lower() == "3" or nAbbrevFull.lower() == "nc"):
+				nAbbrev = "nc"
+				nFullJx = "North Carolina"
+				nSearchLoopBool = True
+			elif (nAbbrevFull.lower() == "arkansas" or nAbbrevFull.lower() == "4" or nAbbrevFull.lower() == "ark"):
+				nAbbrev = "ark"
+				nFullJx = "Arkansas"
+				nSearchLoopBool = True
+			else:
+				print ("")
+				print ("Sorry, invalid input!") 
+				print ("I'm a computer and I can be a little picky, please check your spelling and try again!")
+				print ("")
+
+	nSearchLoopBool = False
+
+
+	while (nSearchLoopBool == False):
+		print ("")
+		nYear = input ("Please type the year you want to search: ")
+
+
+		if (nYear.isdigit()):
+
+			if (int(nYear) < 2024):
+				nSearchLoopBool = True
+			else:
+				print ("")
+				print ("Sorry, invalid input!") 
+				print ("Please enter a year less than  or equal to 2023!")
+				print ("")
+
+		else:
+			print ("")
+			print ("Sorry, invalid input!") 
+			print ("I'm a computer and I can be a little picky, please enter a year as integers (i.e., 1975)!")
+			print ("")
+
+
+	nSearchLoopBool = False
+	nAddWordBool = False
+	nSearchList = []
+
+	while (nSearchLoopBool == False):
+		print ("")
+
+		while (nAddWordBool == False):
+			nWordFull = input ("Please type a keyword and press enter: ")
+
+			nWordPerm = nWordFull
+
+			nSearchList.append(nWordFull)
+
+			innerNloopBool = False
+
+			while (innerNloopBool == False):
+
+				print ("")
+
+				print ("Would you like to add any additional keywords?")
+				nAddMoreWords = input ("Please type \"yes\" or \"no\": ")
+
+
+				if (nAddMoreWords.lower() == "yes" or nAddMoreWords.lower() == "y"):
+					print ("")
+					innerNloopBool = True
+
+				elif (nAddMoreWords.lower() == "no" or nAddMoreWords.lower() == "n"):
+					print ("")
+					print ("Compiling keywords...")
+					print ("")
+					nAddWordBool = True
+					innerNloopBool = True
+					nSearchLoopBool = True
+				else:
+					print ("")
+					print ("Sorry, invalid input!") 
+					print ("I'm a computer and I can be a little picky, please check your spelling and try again!")
+					print ("")
+	
+	currentNSearchString = ""
+	nTinyBool = False
+
+	for eachWord in nSearchList:
+		if (nTinyBool == False):
+			currentNSearchString = eachWord
+			nTinyBool = True
+		else:
+			currentNSearchString = (currentNSearchString + " " + eachWord)
+
+
+
+	keyResponseLoop = requests.get(
+		("https://api.case.law/v1/ngrams/?q=" + currentNSearchString + "&jurisdicition=" + nAbbrev + "&year=" + str(nYear))
+		)
+	res = keyResponseLoop.json()
+
+	termsIndexed = res["results"][currentNSearchString]["total"][0]["count"][0]
+	termsTotal = res["results"][currentNSearchString]["total"][0]["count"][1]
+
+	casesIndexed = res["results"][currentNSearchString]["total"][0]["doc_count"][0]
+	casesTotal = res["results"][currentNSearchString]["total"][0]["doc_count"][1]
+
+
+	print ("Getting Results....")
+	print ("")
+	time.sleep(3)
+
+	print ("")
+	print ("RESULTS: ")
+	print ("")
+	print ("Year: " + str(nYear))
+	print ("Jurisdiction: " + str(nFullJx))
+	print ("Number of search terms indexed: " + str(termsTotal))
+	print ("Number of search terms found: " + str(termsIndexed))
+	print ("Number of cases indexed: " + str(casesTotal))
+	print ("Number of cases found: " + str(casesIndexed))
+	print ("")
+
+	time.sleep(5)
+
+
 
 def caseSearch():
 	print("")
@@ -664,7 +801,7 @@ def main():
 		print ("How would you like to search?")
 		print ("1. By Jurisdiction")
 		print ("2. By Keyword")
-		print ("3. By Year")
+		print ("3. Quick Search: # Of Cases By Year")
 		print ("4. By Case Number")
 		print ("5. View Instructions")
 
