@@ -1,5 +1,5 @@
 # legal-api
-Welcome to Legal APIs. This is a work in progress and contributions are welcomed :)
+Welcome to (a) Legal API resource. This is a work in progress and contributions are welcomed :)
 
 ## Case Law Access Project
 Running api.py: </br>
@@ -14,9 +14,10 @@ ChatGPT: https://chat.openai.com </br>
 Maël Fabien's Unsupervised Learning Cheat Sheet: https://maelfabien.github.io/machinelearning/unsupervised/# </br>
 Codecademy Cheat Sheet: https://www.codecademy.com/learn/unsupervised-learning-skill-path/modules/clustering-skill-path/cheatsheet </br>
 
-## Other Helpful APIs & Bots
+## Other Helpful APIs, Bots, and Tools
 Twitter: https://developer.twitter.com/en/docs/twitter-api </br>
 Big Cases Twitter Bot: https://twitter.com/big_cases </br>
+Reqbin: https://reqbin.com/ </br>
 
 ## Github Repos:
 Machine Learning: https://github.com/search?o=desc&q=topic%3Amachine-learning+&s=stars&type=Repositories </br>
