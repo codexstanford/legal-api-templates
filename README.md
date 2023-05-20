@@ -15,14 +15,18 @@ Maël Fabien's Unsupervised Learning Cheat Sheet: https://maelfabien.github.io/m
 Codecademy Cheat Sheet: https://www.codecademy.com/learn/unsupervised-learning-skill-path/modules/clustering-skill-path/cheatsheet </br>
 
 ## Other Helpful APIs, Bots, and Tools
+OpenAI API: https://openai.com/blog/openai-api </br>
 Twitter: https://developer.twitter.com/en/docs/twitter-api </br>
 Big Cases Twitter Bot: https://twitter.com/big_cases </br>
 Reqbin: https://reqbin.com/ </br>
+OpenAI Node.js library: https://www.npmjs.com/package/openai-api
 
 ## Github Repos:
 Machine Learning: https://github.com/search?o=desc&q=topic%3Amachine-learning+&s=stars&type=Repositories </br>
 Tensorflow: https://github.com/search?q=topic%3Atensorflow&type=Repositories </br>
 NLP: https://github.com/search?utf8=%E2%9C%93&q=topic%3Anlp&type=Repositories </br>
+OpenAI (Python): https://github.com/OthersideAI/chronology
+OpenAI (node.js): https://github.com/tectalichq/public-openai-client-js
 
 ## Paid APIs
 CourtListener API: https://www.courtlistener.com/help/api/ </br>
